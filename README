@@ -1,0 +1,5 @@
+Provides a means to write data translation maps in Ruby and translate from a source object
+to a hash. A mixin is also provided to help ease the creation of new objects from
+mappings.
+
+See DataTranslation and DataTranslation::Destination for details and examples.
