@@ -1,8 +1,9 @@
 require 'rubygems'
+require 'lib/data_translation'
 
 SPEC = Gem::Specification.new do |s|
 	s.name     = 'data_translation'
-	s.version  = '1.1.0'
+	s.version  = DataTranslation::VERSION
 	s.author   = 'Scott Patterson'
 	s.email    = 'scott.patterson@digitalaun.com'
 	s.platform = Gem::Platform::RUBY
