@@ -150,11 +150,11 @@ class DataTranslation
       @mappings.each do |to, from|
         if from.respond_to? :call                # Lambda
           results[to] = from.call(source)
-        elsif source.respond_to?(from.to_sym)    # Source Object
-          results[to] = source.send(from.to_sym)
         elsif source.respond_to?(:[]) &&         # Hash-like Object
               (options[:strict] == false || source.has_key?(from))
           results[to] = source[from]
+        elsif source.respond_to?(from.to_sym)    # Source Object
+          results[to] = source.send(from.to_sym)
         else
           raise NonresponsiveSource, 
                 "#{to}: #{source.class} does not respond to '#{from}' (#{from.class})"

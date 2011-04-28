@@ -93,6 +93,24 @@ class TC_DataTranslation < Test::Unit::TestCase
     assert_equal 'Value2', results['Dest2']
   end
   
+  # Ran into an issue when mapping US address data from a hash with
+  # symbol keys. :zip was specified as a key, but because we checked
+  # for object methods first, enumerable#zip was being called instead
+  # of hash#[].
+  def test_should_check_for_hashlike_object_before_source
+    source = {:zip => '99999'}
+    
+    dt = DataTranslation.new do |m|
+      m.link 'ZipCode', :zip
+    end
+    
+    source.expects(:zip).never
+    
+    results = dt.transform(source)
+    
+    assert_equal '99999', results['ZipCode']
+  end
+  
   def test_should_call_processor_on_transform
     dt = DataTranslation.new do |m|
       m.link :name, 'Name'
