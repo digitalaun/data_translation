@@ -34,7 +34,7 @@
 # new_object = agent.from_source(source)
 
 class DataTranslation
-  VERSION = '1.0.0'
+  VERSION = '1.1.0'
   
   attr_reader :mappings, :static_values, :options
   

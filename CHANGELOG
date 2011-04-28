@@ -1,2 +1,10 @@
-Version 1.0
-	2010-07-28 - Scott Patterson - Created initial library.
+Version 1.1 (2011-04-28)
+
+* Switched order of source checking so that hashes are checked prior to source
+* Changed #from_source to call processor with different arugments depending 
+  upon processor arity
+
+        
+Version 1.0 (2010-07-28)
+
+* Created initial library.
