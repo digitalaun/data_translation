@@ -95,8 +95,10 @@ class DataTranslation
   
   # If called without a block, returns the current block. If called with a block,
   # sets the block that will be run with the results from #transform when #from_source
-  # is called. The results of the transformation will be passed as the only argument.
-  def processor(&block) # |transform_results|
+  # is called. The results of the transformation will be passed if the block
+  # expects only one parameter. If the block expects two parameters both the results
+  # and the original source object will be provided.
+  def processor(&block) # |transform_results [, source_data]|
     if block_given?
       @processor = block
     else
