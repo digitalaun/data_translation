@@ -124,7 +124,15 @@ class DataTranslation
   def from_source(source, options = {})
     results = transform(source, options)
     
-    @processor.nil? ? results : @processor.call(results)
+    if @processor      
+      if @processor.arity == 1
+        @processor.call(results)
+      else
+        @processor.call(results, source)
+      end
+    else
+      results
+    end
   end
   
   # Yields the mapping object so that options and links can be applied within a block.

@@ -81,7 +81,7 @@ class TC_DataTranslationDestination < Test::Unit::TestCase
   def test_should_call_processor_if_given
     DataTranslation.destination(PlainObject)
     test_should_create_map(PlainObject) do |m|
-      m.processor do |results|
+      m.processor do |results, source|
         results.values.sort # for consistency we sort our values
       end
     end
